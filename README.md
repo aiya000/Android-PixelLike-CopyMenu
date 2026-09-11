@@ -1,69 +1,80 @@
 # PixelLike CopyMenu
 
-クリップボードの中身をすぐに編集・共有するための、小さな Android アプリ。
+A small Android app for editing and sharing what is on the clipboard, styled after the Pixel copy menu.
 
-起動すると画面の左下にコピー済みのテキストが表示され、その隣の共有ボタンから OS の共有メニューを開ける。
+Launching it shows the copied text as a card in the bottom left corner, with a share button next to it.
 
-## 機能
+## Features
 
-- 起動時に、クリップボードの現在のテキストをカードとして表示する。カードの高さは固定で、入りきらないテキストはカードの中でスクロールする
-- クリップボードがテキストでない場合は、`テキストをコピーしていません` とトーストを出して終了する
-- カードをタップすると編集パネルが開く。パネルの外側をタップすると編集を終了し、編集後のテキストをクリップボードにコピーする
-    - テキスト欄の左上の丸い閉じるボタンは、編集を破棄して閉じる
-- 共有ボタンをタップすると、`Intent.ACTION_SEND` で OS の共有メニューを開く
-- メニューの外側をタップするとアプリを終了する
+- On launch, the current clipboard text is shown as a card. The card height is fixed, and text that does not
+  fit scrolls inside it
+- When the clipboard holds something that is not text, the app shows a toast and exits
+- Tapping the card opens the editing panel. Tapping outside of the panel finishes the editing and copies the
+  edited text to the clipboard
+    - The check button confirms the edit, exactly like tapping outside
+    - The close button discards the edit and closes the panel without copying
+    - The panel keeps its size whether the keyboard is shown or not. The text area is padded at the bottom by
+      the height the keyboard hides, so the last line can still be brought above the keyboard
+- Tapping the share button opens the system share sheet with `Intent.ACTION_SEND`
+- Tapping outside of the menu exits the app
 
-## 構成
+## Layout
 
-- 言語: Kotlin
+- Language: Kotlin
 - UI: Jetpack Compose
-- applicationId: `io.github.aiya000.pixellikecopymenu`
+- applicationId: `io.github.aiya000.pixellikecopymenu` (`.debug` is appended to the debug build)
 - minSdk 26 / targetSdk 35 / compileSdk 35
 
 ```
 app/src/main/kotlin/io/github/aiya000/pixellikecopymenu/
-├── MainActivity.kt     -- クリップボードの読み取りと画面の起動
-├── CopyMenuScreen.kt   -- 左下のカードと共有ボタン
-├── EditOverlay.kt      -- 編集パネル
-├── Clipboard.kt        -- クリップボードと共有のヘルパー
-└── Theme.kt            -- 配色
+├── MainActivity.kt     -- reads the clipboard and hosts the screen
+├── CopyMenuScreen.kt   -- the card and the share button
+├── EditOverlay.kt      -- the editing panel
+├── Clipboard.kt        -- clipboard and sharing helpers
+└── Theme.kt            -- colors
 ```
 
-## ビルド
+## Building
 
-Android Studio は不要。Android SDK (platform 35, build-tools) と JDK 17 があればよい。
+Android Studio is not needed. An Android SDK (platform 35, build-tools) and JDK 17 are enough.
 
-`local.properties` に SDK の場所を書く。
+Point `local.properties` at the SDK.
 
 ```properties
 sdk.dir=/path/to/Android/Sdk
 ```
 
-JDK 17 が `PATH` にある状態で、
+With JDK 17 on `PATH`:
 
 ```console
 $ ./gradlew :app:assembleDebug
 ```
 
-`app/build/outputs/apk/debug/app-debug.apk` ができる。
+This produces `app/build/outputs/apk/debug/app-debug.apk`.
 
-mise で JDK を管理している場合は、
+When the JDK is managed by mise:
 
 ```console
 $ mise exec java@17 -- ./gradlew :app:assembleDebug
 ```
 
-## インストール
+## Installing
 
 ```console
 $ adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## 補足
+The debug build uses its own application id, so it installs next to the release build. It is the one with the
+orange launcher icon, labelled `CopyMenu debug`.
 
-Android 10 (API 29) 以降、クリップボードはフォアグラウンドでウィンドウフォーカスを持つアプリしか読めない。
-そのため `MainActivity` では `onCreate` ではなく `onWindowFocusChanged` でクリップボードを読んでいる。
+The release build is unsigned, because the project declares no signing config. Sign it yourself before
+installing it, for example with the Android debug keystore for a personal build.
 
-## ライセンス
+## Notes
+
+Since Android 10 (API 29), only the foreground app that holds the window focus may read the clipboard.
+`MainActivity` therefore reads it in `onWindowFocusChanged`, not in `onCreate`.
+
+## License
 
 [MIT License](LICENSE)
