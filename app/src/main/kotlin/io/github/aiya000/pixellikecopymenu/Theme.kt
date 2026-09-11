@@ -1,4 +1,4 @@
-package io.github.aiya000.copymenu
+package io.github.aiya000.pixellikecopymenu
 
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color

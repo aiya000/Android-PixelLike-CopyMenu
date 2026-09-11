@@ -1,4 +1,4 @@
-package io.github.aiya000.copymenu
+package io.github.aiya000.pixellikecopymenu
 
 import android.content.Intent
 import android.os.Bundle

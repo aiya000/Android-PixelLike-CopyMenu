@@ -1,4 +1,4 @@
-# CopyMenu
+# PixelLike CopyMenu
 
 クリップボードの中身をすぐに編集・共有するための、小さな Android アプリ。
 
@@ -6,10 +6,10 @@
 
 ## 機能
 
-- 起動時に、クリップボードの現在のテキストをカードとして表示する。長いテキストはカードの中でスクロールする
+- 起動時に、クリップボードの現在のテキストをカードとして表示する。カードの高さは固定で、入りきらないテキストはカードの中でスクロールする
 - クリップボードがテキストでない場合は、`テキストをコピーしていません` とトーストを出して終了する
 - カードをタップすると編集パネルが開く。パネルの外側をタップすると編集を終了し、編集後のテキストをクリップボードにコピーする
-    - テキスト欄の左上の閉じるボタンは、編集を破棄して閉じる
+    - テキスト欄の左上の丸い閉じるボタンは、編集を破棄して閉じる
 - 共有ボタンをタップすると、`Intent.ACTION_SEND` で OS の共有メニューを開く
 - メニューの外側をタップするとアプリを終了する
 
@@ -17,11 +17,11 @@
 
 - 言語: Kotlin
 - UI: Jetpack Compose
-- applicationId: `io.github.aiya000.copymenu`
+- applicationId: `io.github.aiya000.pixellikecopymenu`
 - minSdk 26 / targetSdk 35 / compileSdk 35
 
 ```
-app/src/main/kotlin/io/github/aiya000/copymenu/
+app/src/main/kotlin/io/github/aiya000/pixellikecopymenu/
 ├── MainActivity.kt     -- クリップボードの読み取りと画面の起動
 ├── CopyMenuScreen.kt   -- 左下のカードと共有ボタン
 ├── EditOverlay.kt      -- 編集パネル
@@ -63,3 +63,7 @@ $ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 Android 10 (API 29) 以降、クリップボードはフォアグラウンドでウィンドウフォーカスを持つアプリしか読めない。
 そのため `MainActivity` では `onCreate` ではなく `onWindowFocusChanged` でクリップボードを読んでいる。
+
+## ライセンス
+
+[MIT License](LICENSE)

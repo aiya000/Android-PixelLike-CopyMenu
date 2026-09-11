@@ -1,4 +1,4 @@
-package io.github.aiya000.copymenu
+package io.github.aiya000.pixellikecopymenu
 
 import android.content.ClipData
 import android.content.ClipDescription

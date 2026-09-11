@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "io.github.aiya000.copymenu"
+    namespace = "io.github.aiya000.pixellikecopymenu"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "io.github.aiya000.copymenu"
+        applicationId = "io.github.aiya000.pixellikecopymenu"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

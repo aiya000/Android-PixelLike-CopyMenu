@@ -1,4 +1,4 @@
-package io.github.aiya000.copymenu
+package io.github.aiya000.pixellikecopymenu
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -32,11 +32,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-/** How tall the copied text card may grow before it starts scrolling. */
-private val CardMaxHeight = 220.dp
+/** The copied text card is always this tall, however much text it holds. */
+private val CardHeight = 144.dp
 
 /**
  * The launcher UI: the copied text on the left, the share button next to it.
@@ -98,7 +99,7 @@ fun CopyMenuScreen(
 }
 
 /**
- * The copied text. Long text stays inside [CardMaxHeight] and scrolls within the card.
+ * The copied text, in a card of a fixed [CardHeight]. Text that does not fit scrolls.
  */
 @Composable
 private fun CopiedTextCard(
@@ -110,13 +111,13 @@ private fun CopiedTextCard(
 
     Box(
         modifier = modifier
+            .height(CardHeight)
             .clip(RoundedCornerShape(24.dp))
             .background(AccentBrush)
             .padding(6.dp)
             .clip(RoundedCornerShape(19.dp))
             .background(CopyMenuColors.CardBackground)
             .clickable(onClick = onClick)
-            .heightIn(max = CardMaxHeight)
             .verticalScroll(scrollState)
             .padding(horizontal = 14.dp, vertical = 12.dp),
     ) {
@@ -129,15 +130,19 @@ private fun CopiedTextCard(
     }
 }
 
+/** A round gradient button, like the share button of the menu. */
 @Composable
-private fun CircleButton(
+fun CircleButton(
     icon: ImageVector,
     contentDescription: String,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    size: Dp = 64.dp,
+    iconSize: Dp = 28.dp,
 ) {
     Box(
-        modifier = Modifier
-            .size(64.dp)
+        modifier = modifier
+            .size(size)
             .clip(CircleShape)
             .background(AccentBrush)
             .clickable(onClick = onClick),
@@ -147,7 +152,7 @@ private fun CircleButton(
             imageVector = icon,
             contentDescription = contentDescription,
             tint = CopyMenuColors.OnSurface,
-            modifier = Modifier.size(28.dp),
+            modifier = Modifier.size(iconSize),
         )
     }
 }

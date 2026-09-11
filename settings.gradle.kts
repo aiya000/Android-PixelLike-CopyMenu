@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CopyMenu"
+rootProject.name = "PixelLikeCopyMenu"
 include(":app")
