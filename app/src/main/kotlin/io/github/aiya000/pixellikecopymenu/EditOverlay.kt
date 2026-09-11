@@ -69,11 +69,7 @@ fun EditOverlay(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.72f)
-                .clip(RoundedCornerShape(30.dp))
-                .background(PanelBrush)
-                .noRippleClickable { }
-                .padding(16.dp),
+                .fillMaxHeight(0.78f),
         ) {
             CircleButton(
                 icon = Icons.Filled.Close,
@@ -83,11 +79,16 @@ fun EditOverlay(
                 iconSize = 20.dp,
             )
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(14.dp))
 
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .clip(RoundedCornerShape(30.dp))
+                    .background(PanelBrush)
+                    .noRippleClickable { }
+                    .padding(20.dp)
                     .clip(RoundedCornerShape(22.dp))
                     .background(CopyMenuColors.PanelInner)
                     .padding(14.dp),
