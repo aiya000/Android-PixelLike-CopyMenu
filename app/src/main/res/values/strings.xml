@@ -4,5 +4,6 @@
     <string name="no_text_copied">テキストをコピーしていません</string>
     <string name="share">共有</string>
     <string name="close">閉じる</string>
+    <string name="done">完了</string>
     <string name="edit_hint">コピーするテキスト</string>
 </resources>
