@@ -8,27 +8,27 @@ Launching it shows the copied text as a card in the bottom left corner, with a s
 
 <table>
   <tr>
-    <td width="25%"><img src="docs/usage-1-copy.png" alt="Selecting text in a browser and tapping Copy"></td>
-    <td width="25%"><img src="docs/usage-2-menu.png" alt="The copied text shown as a card, with the share button next to it"></td>
-    <td width="25%"><img src="docs/usage-3-edit.png" alt="The editing panel open with the keyboard up"></td>
-    <td width="25%"><img src="docs/usage-4-convert.png" alt="Typing into the text with the IME candidates showing"></td>
+    <td width="25%">1. Copy text in any app</td>
+    <td width="25%">2. Launch CopyMenu: the clipboard text sits in the bottom left</td>
+    <td width="25%">3. Tap the card to edit it</td>
+    <td width="25%">4. The panel keeps its size while the keyboard is up</td>
   </tr>
   <tr>
-    <td>1. Copy text in any app</td>
-    <td>2. Launch CopyMenu: the clipboard text sits in the bottom left</td>
-    <td>3. Tap the card to edit it</td>
-    <td>4. The panel keeps its size while the keyboard is up</td>
-  </tr>
-  <tr>
-    <td><img src="docs/usage-5-panel.png" alt="The editing panel with the keyboard dismissed"></td>
-    <td><img src="docs/usage-6-card.png" alt="The card showing the edited text"></td>
-    <td><img src="docs/usage-7-share.png" alt="The system share sheet holding the edited text"></td>
-    <td></td>
+    <td><img src="docs/usage-1-copy.png" alt="Selecting text in a browser and tapping Copy"></td>
+    <td><img src="docs/usage-2-menu.png" alt="The copied text shown as a card, with the share button next to it"></td>
+    <td><img src="docs/usage-3-edit.png" alt="The editing panel open with the keyboard up"></td>
+    <td><img src="docs/usage-4-convert.png" alt="Typing into the text with the IME candidates showing"></td>
   </tr>
   <tr>
     <td>5. With the keyboard down, the text area fills the panel again</td>
     <td>6. The check button confirms the edit and copies it</td>
     <td>7. The share button hands it to the system share sheet</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="docs/usage-5-panel.png" alt="The editing panel with the keyboard dismissed"></td>
+    <td><img src="docs/usage-6-card.png" alt="The card showing the edited text"></td>
+    <td><img src="docs/usage-7-share.png" alt="The system share sheet holding the edited text"></td>
     <td></td>
   </tr>
 </table>
