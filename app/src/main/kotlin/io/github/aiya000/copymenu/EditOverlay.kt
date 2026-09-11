@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
@@ -62,6 +63,7 @@ fun EditOverlay(
             .fillMaxSize()
             .background(CopyMenuColors.Scrim)
             .noRippleClickable { onCommit(value.text) }
+            .systemBarsPadding()
             .imePadding()
             .padding(horizontal = 22.dp, vertical = 32.dp),
         contentAlignment = Alignment.Center,
