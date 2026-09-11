@@ -17,6 +17,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            // A different application id, so that the debug build and the release build
+            // can be installed at the same time. Its launcher icon is orange
+            // (src/debug/res) and its label says debug.
+            applicationIdSuffix = ".debug"
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(

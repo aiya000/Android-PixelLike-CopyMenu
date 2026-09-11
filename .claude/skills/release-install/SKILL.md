@@ -36,8 +36,8 @@ Install the signed release APK on the device connected via adb.
 
 ## Notes
 
-- Debug and release share the application id `io.github.aiya000.pixellikecopymenu`. Installing one over the
-  other fails with `INSTALL_FAILED_UPDATE_INCOMPATIBLE` because the debug build is signed by gradle's own
-  debug signing config and the release build by `apksigner`; uninstall the other one first
+- Debug and release have different application ids -- `io.github.aiya000.pixellikecopymenu` and
+  `io.github.aiya000.pixellikecopymenu.debug` (`applicationIdSuffix` in `app/build.gradle.kts`) -- so both
+  are installed at once and this never touches the debug build
 - Updating an earlier personal release build works only when it was signed with the same key
   (the Android debug keystore, see `release-build`)

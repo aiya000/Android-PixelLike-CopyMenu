@@ -45,8 +45,11 @@ Install the debug APK on the device connected via adb.
 
 ## Notes
 
-- To launch it: `adb shell am start -n io.github.aiya000.pixellikecopymenu/.MainActivity`
-- If an older build with a different application id is still installed, uninstall it first
+- To launch it:
+  `adb shell am start -n io.github.aiya000.pixellikecopymenu.debug/io.github.aiya000.pixellikecopymenu.MainActivity`
+  -- the application id carries the `.debug` suffix, the activity class does not
+- The debug build installs **alongside** the release build and never replaces it. It is the one with the
+  orange launcher icon, labelled `CopyMenu debug`
 - On a foldable the device has several displays, and `screencap` without `-d` warns and picks an arbitrary one.
   List the display ids with `adb shell dumpsys SurfaceFlinger --display-id` and pass the active one:
   `adb exec-out screencap -p -d <display-id> > shot.png`

@@ -43,6 +43,7 @@ Build the debug APK. The project has no product flavors, so there is a single de
 
 ## Notes
 
-- Debug and release share the application id `io.github.aiya000.pixellikecopymenu`, so they cannot be
-  installed side by side
+- The debug variant's application id is `io.github.aiya000.pixellikecopymenu.debug` (`applicationIdSuffix`),
+  so it installs side by side with the release build. `src/debug/res` overrides the launcher icon background
+  with orange and the label with `CopyMenu debug`, which is how the two are told apart on the device
 - Do not install automatically. Installing is the `debug-install` skill, run it only when the user asks
