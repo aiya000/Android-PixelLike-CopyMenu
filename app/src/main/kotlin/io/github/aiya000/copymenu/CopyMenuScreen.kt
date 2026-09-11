@@ -8,13 +8,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
@@ -29,9 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
+/** How tall the copied text card may grow before it starts scrolling. */
+private val CardMaxHeight = 220.dp
 
 /**
  * The launcher UI: the copied text on the left, the share button next to it.
@@ -92,12 +97,17 @@ fun CopyMenuScreen(
     }
 }
 
+/**
+ * The copied text. Long text stays inside [CardMaxHeight] and scrolls within the card.
+ */
 @Composable
 private fun CopiedTextCard(
     text: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
+    val scrollState = rememberScrollState()
+
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(24.dp))
@@ -106,6 +116,8 @@ private fun CopiedTextCard(
             .clip(RoundedCornerShape(19.dp))
             .background(CopyMenuColors.CardBackground)
             .clickable(onClick = onClick)
+            .heightIn(max = CardMaxHeight)
+            .verticalScroll(scrollState)
             .padding(horizontal = 14.dp, vertical = 12.dp),
     ) {
         Text(
@@ -113,8 +125,6 @@ private fun CopiedTextCard(
             color = CopyMenuColors.OnSurface,
             fontSize = 15.sp,
             lineHeight = 21.sp,
-            maxLines = 6,
-            overflow = TextOverflow.Ellipsis,
         )
     }
 }

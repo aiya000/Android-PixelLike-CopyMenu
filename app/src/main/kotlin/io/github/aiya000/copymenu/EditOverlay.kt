@@ -3,11 +3,11 @@ package io.github.aiya000.copymenu
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -68,51 +67,44 @@ fun EditOverlay(
             .padding(horizontal = 22.dp, vertical = 32.dp),
         contentAlignment = Alignment.Center,
     ) {
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.72f)
                 .clip(RoundedCornerShape(30.dp))
                 .background(PanelBrush)
                 .noRippleClickable { }
-                .padding(20.dp),
+                .padding(20.dp)
+                .clip(RoundedCornerShape(22.dp))
+                .background(CopyMenuColors.PanelInner)
+                .padding(10.dp),
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(22.dp))
-                    .background(CopyMenuColors.PanelInner)
-                    .padding(16.dp),
-            ) {
-                BasicTextField(
-                    value = value,
-                    onValueChange = { value = it },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .focusRequester(focusRequester),
-                    textStyle = TextStyle(
-                        color = CopyMenuColors.OnSurface,
-                        fontSize = 16.sp,
-                        lineHeight = 23.sp,
-                    ),
-                    cursorBrush = SolidColor(CopyMenuColors.Cursor),
-                )
-            }
-
             IconButton(
                 onClick = onCancel,
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .offset(x = (-8).dp, y = (-8).dp)
-                    .size(36.dp),
+                modifier = Modifier.size(34.dp),
             ) {
                 Icon(
                     imageVector = Icons.Filled.Close,
                     contentDescription = stringResource(R.string.close),
-                    tint = Color.White.copy(alpha = 0.8f),
+                    tint = CopyMenuColors.OnSurface.copy(alpha = 0.6f),
                     modifier = Modifier.size(20.dp),
                 )
             }
+
+            BasicTextField(
+                value = value,
+                onValueChange = { value = it },
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+                    .focusRequester(focusRequester),
+                textStyle = TextStyle(
+                    color = CopyMenuColors.OnSurface,
+                    fontSize = 16.sp,
+                    lineHeight = 23.sp,
+                ),
+                cursorBrush = SolidColor(CopyMenuColors.Cursor),
+            )
         }
     }
 
