@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,6 +35,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
+/** The copied text card is always this wide, however short the text is. */
+private val CardWidth = 200.dp
 
 /** The copied text card is always this tall, however much text it holds. */
 private val CardHeight = 144.dp
@@ -75,7 +78,7 @@ fun CopyMenuScreen(
                 text = text,
                 modifier = Modifier
                     .weight(1f, fill = false)
-                    .widthIn(max = 260.dp),
+                    .width(CardWidth),
                 onClick = { editing = true },
             )
             CircleButton(
@@ -99,7 +102,8 @@ fun CopyMenuScreen(
 }
 
 /**
- * The copied text, in a card of a fixed [CardHeight]. Text that does not fit scrolls.
+ * The copied text, in a card of a fixed [CardWidth] and [CardHeight].
+ * Text that does not fit scrolls.
  */
 @Composable
 private fun CopiedTextCard(
