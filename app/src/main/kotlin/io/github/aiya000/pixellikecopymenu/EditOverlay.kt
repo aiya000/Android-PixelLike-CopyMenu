@@ -48,9 +48,9 @@ import androidx.compose.ui.unit.sp
 /**
  * The editing panel shown when the copied text is tapped.
  *
- * Tapping outside of the panel (or going back) finishes the editing and
- * hands the edited text to [onCommit], the same as the check button.
- * The close button discards the edit.
+ * Tapping outside of the panel finishes the editing and hands the edited text
+ * to [onCommit], the same as the check button.
+ * The close button and the back gesture discard the edit.
  *
  * The panel keeps the same size whether the keyboard is shown or not. Instead of
  * shrinking the panel, the text area is padded at the bottom by the height the
@@ -76,7 +76,7 @@ fun EditOverlay(
         (textAreaBottom - keyboardTop).coerceAtLeast(0f).toDp()
     }
 
-    BackHandler { onCommit(value.text) }
+    BackHandler { onCancel() }
 
     Box(
         modifier = Modifier
