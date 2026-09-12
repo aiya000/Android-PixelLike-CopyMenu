@@ -67,7 +67,7 @@ AIYA000_KEY_PASSWORD=<the same password>
 
     - v2 `true`, v3 `true`, v1 `false` (v1 is only needed below API 24; `minSdk` is 26)
     - `Signer #1 certificate DN: CN=aiya000, O=aiya000, C=JP`
-    - `Signer #1 certificate SHA-256 digest: aa0139340997a7a4159adb278f22087226967442d17510245f6e34e2dcb7569b`
+    - `Signer #1 certificate SHA-256 digest: 9c5ed06732d180ca3aca8bcf611ad25c983b6bf89ddd56cc7e9fae7d57844991`
     - `Signer #1 key size (bits): 4096`
 
 4. Report the APK path:

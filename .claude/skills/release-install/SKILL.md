@@ -34,14 +34,21 @@ Install the signed release APK on the device connected via adb.
     adb install -r app/build/outputs/apk/release/app-release.apk
     ```
 
-4. Report `Success` or the adb error verbatim
+4. Only where that fails with `INSTALL_FAILED_UPDATE_INCOMPATIBLE`, uninstall the installed copy and
+   install again. Do not uninstall pre-emptively -- it also clears the app's data:
+
+    ```bash
+    adb uninstall io.github.aiya000.pixellikecopymenu
+    adb install app/build/outputs/apk/release/app-release.apk
+    ```
+
+5. Report `Success` or the adb error verbatim
 
 ## Notes
 
 - Debug and release have different application ids -- `io.github.aiya000.pixellikecopymenu.debug` and
   `io.github.aiya000.pixellikecopymenu` (`applicationIdSuffix` in `app/build.gradle.kts`) -- so both are
   installed at once and this never touches the debug build
-- `INSTALL_FAILED_UPDATE_INCOMPATIBLE` means the installed copy was signed with a different key. Builds up to
-  2026-09-12 were signed with the Android debug keystore; everything from then on uses the personal release
-  key. Uninstall the old copy first -- `adb uninstall io.github.aiya000.pixellikecopymenu` -- which also
-  clears its data
+- `INSTALL_FAILED_UPDATE_INCOMPATIBLE` means the installed copy was signed with a different key. The signing
+  key has changed twice already: builds up to 2026-09-12 used the Android debug keystore, and the personal
+  release key itself was regenerated on 2026-09-12 as well. Both times the fix was the uninstall of step 4
