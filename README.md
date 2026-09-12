@@ -4,6 +4,14 @@ A small Android app for editing and sharing what is on the clipboard, styled aft
 
 Launching it shows the copied text as a card in the bottom left corner, with a share button next to it.
 
+## Demo
+
+Copying a URL in another app, editing it in CopyMenu, and handing it to the system share sheet.
+
+<img src="docs/demo.gif" alt="Copying a URL in a browser, editing it in CopyMenu, and sharing it" width="320">
+
+<sub>[video](docs/demo.mp4)</sub>
+
 ## Usage
 
 <table>
