@@ -57,6 +57,8 @@ The text in the screenshots is a passage of "The Restaurant of Many Orders" by K
       the height the keyboard hides, so the last line can still be brought above the keyboard
 - Tapping the share button opens the system share sheet with `Intent.ACTION_SEND`
 - Tapping outside of the menu exits the app
+- The app stays out of the recent apps list, so it does not sit between you and the app you came from.
+  `MainActivity` declares `android:excludeFromRecents="true"`
 
 ## Layout
 
