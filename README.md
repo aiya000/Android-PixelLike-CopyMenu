@@ -60,6 +60,8 @@ The text in the screenshots is a passage of "The Restaurant of Many Orders" by K
 - The app stays out of the recent apps list, so it does not sit between you and the app you came from.
   `MainActivity` declares `android:excludeFromRecents="true"`
 
+  <img src="docs/recents-empty.png" alt="The recent apps screen, with no entry for CopyMenu" width="320">
+
 ## Layout
 
 - Language: Kotlin
